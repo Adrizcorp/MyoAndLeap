@@ -1,0 +1,36 @@
+{
+  "name": "package",
+  "description": "myo_530p ==============",
+  "version": "0.0.1",
+  "main": "./myo_530p.js",
+  "author": "Adrizcorp <Adrizcorp@gmail.com>",
+  "keywords": [],
+  "licenses": {
+    "type": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/YOUR_LOGIN/Stericlinic.git"
+  },
+  "bugs": {
+    "url": "http://github.com/YOUR_LOGIN/Stericlinic/issues"
+  },
+  "homepage": "https://github.com/YOUR_LOGIN/Stericlinic#readme",
+  "dependencies": {
+    "all": "^0.0.0",
+    "body-parser": "^1.15.2",
+    "bootstrap": "^3.3.7",
+    "chart.js": "^2.5.0",
+    "client-sessions": "^0.7.0",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.5",
+    "express": "^4.10.2",
+    "formidable": "^1.0.17",
+    "socket.io": "^1.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC"
+}

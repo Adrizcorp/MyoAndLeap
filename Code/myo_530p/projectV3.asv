@@ -1,0 +1,88 @@
+%% 
+clear all;
+clc;
+datatxt=fileread('Pronation_supination/emg_data');
+vectors_emg = strsplit(datatxt,';');
+roll = dlmread('Pronation_supination/roll_data',',');
+emg_channels = zeros(8,length(vectors_emg)-1);
+counter=1;
+real_index=1;
+for i=1:length(vectors_emg)
+    vectors_emg_sub = strsplit(vectors_emg{1,i},',');
+    for j=1:8
+        emg_channels(j,real_index)=str2double(vectors_emg_sub{j});
+    end
+    real_index=real_index+1;
+end
+roll=roll(100:end);
+ 
+%% Plotting pitch, Roll and Yaw
+figure; 
+plot(roll);
+title('Roll -  Leap Motion');
+u_roll= abs(emg_channels(4,100:end));%% pronation supination
+y_roll=roll;
+
+%% Plotting EMG signals
+figure; 
+plot(u_roll);
+title('EMG Channel 4 for Pronation Supination - Rectified');
+
+
+%% identify system pronation supination
+na=50;% system order Ay(t)
+nb=50;% system order By(t)
+[a_roll,b_roll]=identify_system(u_roll,y_roll,na,nb);
+
+%% verify system pronation supination
+figure;
+yestimate=dlsim(b_roll,a_roll,u_roll);%simulation of a discrete linear system to calculate Y estimated
+plot(yestimate);
+hold on;
+plot(y_roll);
+%hold on;
+%plot(u_roll);
+
+%% Hand Extension and Flexion
+datatxt=fileread('Extension_flexion/emg_data');
+vectors_emg = strsplit(datatxt,';');
+pitch = dlmread('Extension_flexion/pitch_data',',');
+emg_channels = zeros(8,length(vectors_emg)-1);
+counter=1;
+real_index=1;
+for i=1:length(vectors_emg)
+    vectors_emg_sub = strsplit(vectors_emg{1,i},',');
+    for j=1:8
+        emg_channels(j,real_index)=str2double(vectors_emg_sub{j});
+    end
+    real_index=real_index+1;
+end
+pitch=pitch(100:end);
+%% plotting LEap
+figure; 
+plot(pitch(1:2200));
+title('Roll -  Leap Motion');
+u_pitch= abs(emg_channels(1,100:end));%% pronation supination
+y_pitch=pitch;
+%% Plotting EMG signals
+figure; 
+plot(u_pitch);
+title('EMG Channel 1 for Pronation Supination - Rectified');
+
+
+%% identify system hand movement Extension Flexion
+na=120;% system order Ay(t)
+nb=120;% system order By(t)
+[a_pitch,b_pitch]=identify_system(u_pitch(1:2200),y_pitch(1:2200),na,nb);
+
+%% verify system hand movement Extension Flexion
+figure;
+yestimate=dlsim(b_pitch,a_pitch,u_pitch(1:2200));%simulation of a discrete linear system to calculate Y estimated
+plot(yestimate);
+hold on;
+plot(y_pitch(1:2200));
+
+% hold on;
+% plot(u_pitch);
+
+

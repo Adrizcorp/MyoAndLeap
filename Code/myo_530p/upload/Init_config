@@ -1,0 +1,76 @@
+{
+    "general": {
+        "current_cycle": 1,
+        "current_page": 0,
+        "last_cycle": 1
+    },
+    "gui": {
+        "descarga": {
+            "timeMea": 0
+        },
+        "error_121mant": {
+            "Epres121": -1,
+            "Etemp121": -4
+        },
+        "error_134mant": {
+            "Epres134": 7,
+            "Etemp134": -6
+        },
+        "esteriliza": {
+            "timeMea": 0
+        },
+        "finalizado": {
+            "done": 0
+        },
+        "finalizando": {
+            "done": 0
+        },
+        "ini": {
+			"ciclon_on": 0,
+            "Fecha": "16/04/00",
+            "Sprint":0,
+            "autoPrint": 1,
+            "elec1.val": 1 ,
+            "elec2.val": 0,
+            "elec3.val": 0,
+            "elec4.val": 0,
+			"Auxiliar": 1,
+			"Descarga": 1,
+			"Llenado": 1,
+            "hora": "17:05",
+            "horafin": "00:00",
+            "horainicio": "00:00",
+            "ipC": "169.254.58.41",
+            "lpuerta": 0,
+            "pas": "8487",
+            "presion": "39.30",
+            "puerta": 0,
+            "temperatura": "28.00"
+        },
+        "llena_agua": {
+            "tanque": 100
+        },
+        "secado": {
+            "timeMea": 0
+        },
+        "sp_121mant": {
+            "Spre121": 320,
+            "Stemp121": 1205
+        },
+        "sp_134mant": {
+            "Spre134": 340,
+            "Stemp134": 1335
+        },
+        "tiempo_121mant": {
+            "T121d": 8,
+            "T121e": 38,
+            "T121s": 21
+        },
+        "tiempo_134mant": {
+            "T134d": 9,
+            "T134e": 39,
+            "T134s": 19
+        }
+    }
+}
+

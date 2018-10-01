@@ -1,0 +1,151 @@
+%% 
+clear all;
+clc;
+datatxt=fileread('emg_data');
+vectors_emg = strsplit(datatxt,';');
+pitch = dlmread('pitch_data',',');
+roll = dlmread('roll_data',',');
+yaw = dlmread('yaw_data',',');
+emg_channels = zeros(8,length(vectors_emg)-1);
+counter=1;
+real_index=1;
+for i=1:length(vectors_emg)
+    vectors_emg_sub = strsplit(vectors_emg{1,i},',');
+    for j=1:8
+        emg_channels(j,real_index)=str2double(vectors_emg_sub{j});
+    end
+    real_index=real_index+1;
+end
+
+pitch=pitch(100:end);
+roll=roll(100:end);
+yaw=yaw(100:end);
+
+ 
+%% Plotting EMG signals
+for i=1:8
+    figure; 
+    plot(emg_channels(i,100:end));
+    title(strcat('EMG ',num2str(i)));
+end
+
+%% Plotting pitch, Roll and Yaw
+figure; 
+plot(pitch);
+title('pitch');
+
+figure; 
+plot(roll);
+title('roll');
+
+figure; 
+plot(yaw);
+title('yaw');
+
+%%
+u_pitch= abs(emg_channels(1,100:end));
+u_roll= abs(emg_channels(4,100:end));
+u_yaw= abs(emg_channels(5,100:end));
+%normalization roll pitch and roll channels
+y_pitch=pitch;
+y_roll=roll;
+y_yaw=yaw;
+
+%% identify system
+na=70;% system order Ay(t)
+nb=70;% system order By(t)
+[a_pitch,b_pitch]=identify_system(u_pitch,y_pitch,na,nb);
+[a_roll,b_roll]=identify_system(u_roll,y_roll,na,nb);
+[a_yaw,b_yaw]=identify_system(u_yaw,y_yaw,na,nb);
+
+%% verify system
+
+% arx1red=idpoly(a_roll,b_roll,1,1); 
+% zi=iddata(y_roll,u_roll,1); 
+% compare(zi,arx1red);
+
+% 
+ yestimate=dlsim(b_roll,a_roll,u_roll);%simulation of a discrete linear system to calculate Y estimated
+ plot(yestimate);
+plot(verify_system(u_pitch_normalized,a_pitch,b_pitch));
+% 
+% 
+% 
+% 
+% %% Graph Parameters
+% texto=[];
+% figure;
+% subplot(2,2,1)
+% for order=1:(na),
+%     plot(coeffs_historial(order,:));
+%    % texto= [texto;sprintf('a%d',order)];
+%     hold on;
+% end
+% legend(texto);
+% xlabel('k')
+% ylabel('parameter')
+% texto=[];
+% subplot(2,2,2)
+% for order=1:(nb),
+%     plot(coeffs_historial(order+na,:));
+%    % texto= [texto;sprintf('b%d',order)];
+%     hold on;
+% end
+% legend(texto);
+% xlabel('k')
+% ylabel('parameter')
+% texto=[];
+% 
+% 
+% %% 
+% figure;
+% plot(error_v);
+% %taking out the coeficcients
+% a=[];
+% b=[];
+% 
+% for order=1:na,
+%    a=[a theta(order,1)];
+% end
+% for order=1:nb,
+%    b=[b theta(na+order,1)];
+% end
+% 
+% u1=u;%copy of the input signal
+% numerator=b;
+% denomi=[1 a];
+% yestimate=dlsim(numerator,denomi,u1);%simulation of a discrete linear system to calculate Y estimated
+% 
+% 
+% %% system comparison and verification
+% A=[1 a];
+% B=[b];
+% 
+% 
+% y_estimated = y;
+% 
+% 
+%  for k=(na+nb):m
+%         % Plant response
+%         y_estimated(k) = b*u(k-1:-1:k-length(b)) - a*y_estimated(k-1:-1:k-length(a));
+% 
+%  end
+% 
+% 
+% figure; 
+% plot(y);
+% title('Real Mouse Y vs Estimated Mouse Y');
+% hold on;
+% plot(y_estimated);
+% 
+% 
+% arx1red=idpoly(A,B,1,1); 
+% zi=iddata(y,u,0.01); 
+% compare(zi,arx1red);
+% 
+% figure; 
+% plot(y_estimated,mouse_y);
+% title('drawing');
+% xlim([0 127])
+% ylim([0 95])
+% 

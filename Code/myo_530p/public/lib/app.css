@@ -1,0 +1,42 @@
+body { align-content: center; left:10%;width:80%;position:absolute; top:10%; color: black!important;}
+
+.mainpanel { width:90%;height:40%; }
+.custom_height{height: 20%; 
+    background: -webkit-linear-gradient(#FFFFFF, #4CAF51); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#FFFFFF, #4CAF51); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#FFFFFF, #4CAF51); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#FFFFFF, #4CAF51); /* Standard syntax */
+
+}
+.linksholder a:hover { 
+    
+    background: -webkit-linear-gradient(#F07E0D,#FFFFFF); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#F07E0D,#FFFFFF); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#F07E0D,#FFFFFF); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#F07E0D,#FFFFFF); /* Standard syntax */
+}
+
+.linksholder a:active { 
+    
+     background: -webkit-linear-gradient( #4CAF51,#FFFFFF); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#4CAF51,#FFFFFF); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#4CAF51,#FFFFFF); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#4CAF51,#FFFFFF); /* Standard syntax */
+}
+
+
+
+.linksholder ul { list-style-type: none; }
+
+.linksholder li { font-size: 16px; line-height: 1.5em;}
+
+.linksholder li .fa { margin-right: 5px; }
+
+.linksholder a { color : black;}
+
+.linksholder .fa { color: black;}
+
+.dataTables_filter label { float: left; font-weight:normal; position: absolute; top : -25px; left: 0px; }
+
+.dataTables_info { margin-top: 10px; background: ghostwhite; }
+

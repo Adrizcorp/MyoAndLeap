@@ -1,0 +1,54 @@
+
+<!-- views/login.ejs -->
+<!doctype html>
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Myo Leap Interface</title>
+
+        <link rel="stylesheet" href="css/bootstrap.min.css"> <!-- load bootstrap css -->
+        <link href="css/styles.css" rel="stylesheet">
+
+    </head>
+    <body>
+        <div class="container">
+
+            <div class="col-sm-6 col-sm-offset-3">
+
+
+
+                <div id="botones" class="text-center">
+              
+                <button id="Estimate" type="button" class="btn stericlinicbutton3" onclick="enable_adquisition()">
+                    <span class="glyphicon glyphicon-stats" ></span> enable
+                </button>
+                    
+                <button id="Estimate" type="button" class="btn stericlinicbutton3" onclick="save_data()">
+                    <span class="glyphicon glyphicon-stats" ></span> save
+                </button>
+                </div>
+
+
+
+
+
+            </div>
+
+        </div>
+
+        
+        <div id="footer">
+
+          <div id="output"></div>
+        </div>
+
+    </body>
+    <script src="js/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="lib/leap-0.6.4.js"></script>
+    <script src="lib/leap-0.6.4.js"></script>
+    <script src="lib/leap-plugins-0.1.6.js"></script>
+    <script src="lib/three.js"></script>
+    <script src="javascripts/leap.js"></script>
+</html>
